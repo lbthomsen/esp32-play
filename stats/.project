@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>blink</name>
+	<name>stats</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -259,11 +259,6 @@
 			<location>/home/lth/esp/esp-idf/components/esp_hw_support/esp_clk.c</location>
 		</link>
 		<link>
-			<name>build/ide/esp_idf_components/esp_hw_support/esp_hmac.c</name>
-			<type>1</type>
-			<location>/home/lth/esp/esp-idf/components/esp_hw_support/esp_hmac.c</location>
-		</link>
-		<link>
 			<name>build/ide/esp_idf_components/esp_hw_support/esp_memory_utils.c</name>
 			<type>1</type>
 			<location>/home/lth/esp/esp-idf/components/esp_hw_support/esp_memory_utils.c</location>
@@ -422,6 +417,11 @@
 			<name>build/ide/esp_idf_components/esp_system/system_time.c</name>
 			<type>1</type>
 			<location>/home/lth/esp/esp-idf/components/esp_system/system_time.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/esp_system/task_wdt.c</name>
+			<type>1</type>
+			<location>/home/lth/esp/esp-idf/components/esp_system/task_wdt.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/esp_system/ubsan.c</name>
@@ -639,11 +639,6 @@
 			<location>/home/lth/esp/esp-idf/components/hal/uart_hal_iram.c</location>
 		</link>
 		<link>
-			<name>build/ide/esp_idf_components/hal/usb_dwc_hal.c</name>
-			<type>1</type>
-			<location>/home/lth/esp/esp-idf/components/hal/usb_dwc_hal.c</location>
-		</link>
-		<link>
 			<name>build/ide/esp_idf_components/hal/usb_hal.c</name>
 			<type>1</type>
 			<location>/home/lth/esp/esp-idf/components/hal/usb_hal.c</location>
@@ -652,6 +647,11 @@
 			<name>build/ide/esp_idf_components/hal/usb_phy_hal.c</name>
 			<type>1</type>
 			<location>/home/lth/esp/esp-idf/components/hal/usb_phy_hal.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/hal/usbh_hal.c</name>
+			<type>1</type>
+			<location>/home/lth/esp/esp-idf/components/hal/usbh_hal.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/hal/xt_wdt_hal.c</name>
@@ -1019,9 +1019,9 @@
 			<location>/home/lth/esp/esp-idf/components/unity/unity_utils_memory.c</location>
 		</link>
 		<link>
-			<name>build/ide/esp_idf_components/usb/hcd_dwc.c</name>
+			<name>build/ide/esp_idf_components/usb/hcd.c</name>
 			<type>1</type>
-			<location>/home/lth/esp/esp-idf/components/usb/hcd_dwc.c</location>
+			<location>/home/lth/esp/esp-idf/components/usb/hcd.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/usb/hub.c</name>
@@ -1714,6 +1714,11 @@
 			<location>/home/lth/esp/esp-idf/components/esp_rom/patches/esp_rom_longjmp.S</location>
 		</link>
 		<link>
+			<name>build/ide/esp_idf_components/esp_rom/patches/esp_rom_regi2c.c</name>
+			<type>1</type>
+			<location>/home/lth/esp/esp-idf/components/esp_rom/patches/esp_rom_regi2c.c</location>
+		</link>
+		<link>
 			<name>build/ide/esp_idf_components/esp_rom/patches/esp_rom_spiflash.c</name>
 			<type>1</type>
 			<location>/home/lth/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c</location>
@@ -1744,24 +1749,9 @@
 			<location>/home/lth/esp/esp-idf/components/esp_system/port/cpu_start.c</location>
 		</link>
 		<link>
-			<name>build/ide/esp_idf_components/esp_system/port/esp_system_chip.c</name>
-			<type>1</type>
-			<location>/home/lth/esp/esp-idf/components/esp_system/port/esp_system_chip.c</location>
-		</link>
-		<link>
 			<name>build/ide/esp_idf_components/esp_system/port/panic_handler.c</name>
 			<type>1</type>
 			<location>/home/lth/esp/esp-idf/components/esp_system/port/panic_handler.c</location>
-		</link>
-		<link>
-			<name>build/ide/esp_idf_components/esp_system/task_wdt/task_wdt.c</name>
-			<type>1</type>
-			<location>/home/lth/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c</location>
-		</link>
-		<link>
-			<name>build/ide/esp_idf_components/esp_system/task_wdt/task_wdt_impl_timergroup.c</name>
-			<type>1</type>
-			<location>/home/lth/esp/esp-idf/components/esp_system/task_wdt/task_wdt_impl_timergroup.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/esp_timer/src/esp_timer.c</name>
@@ -2219,11 +2209,6 @@
 			<location>/home/lth/esp/esp-idf/components/soc/esp32s3/touch_sensor_periph.c</location>
 		</link>
 		<link>
-			<name>build/ide/esp_idf_components/soc/esp32s3/twai_periph.c</name>
-			<type>1</type>
-			<location>/home/lth/esp/esp-idf/components/soc/esp32s3/twai_periph.c</location>
-		</link>
-		<link>
 			<name>build/ide/esp_idf_components/soc/esp32s3/uart_periph.c</name>
 			<type>1</type>
 			<location>/home/lth/esp/esp-idf/components/soc/esp32s3/uart_periph.c</location>
@@ -2244,19 +2229,9 @@
 			<location>/home/lth/esp/esp-idf/components/spi_flash/esp32s3/flash_ops_esp32s3.c</location>
 		</link>
 		<link>
-			<name>build/ide/esp_idf_components/spi_flash/esp32s3/spi_flash_oct_flash_init.c</name>
-			<type>1</type>
-			<location>/home/lth/esp/esp-idf/components/spi_flash/esp32s3/spi_flash_oct_flash_init.c</location>
-		</link>
-		<link>
 			<name>build/ide/esp_idf_components/spi_flash/esp32s3/spi_timing_config.c</name>
 			<type>1</type>
 			<location>/home/lth/esp/esp-idf/components/spi_flash/esp32s3/spi_timing_config.c</location>
-		</link>
-		<link>
-			<name>build/ide/esp_idf_components/ulp/ulp_common/ulp_adc.c</name>
-			<type>1</type>
-			<location>/home/lth/esp/esp-idf/components/ulp/ulp_common/ulp_adc.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/ulp/ulp_common/ulp_common.c</name>
@@ -2272,11 +2247,6 @@
 			<name>build/ide/esp_idf_components/wifi_provisioning/proto-c/wifi_constants.pb-c.c</name>
 			<type>1</type>
 			<location>/home/lth/esp/esp-idf/components/wifi_provisioning/proto-c/wifi_constants.pb-c.c</location>
-		</link>
-		<link>
-			<name>build/ide/esp_idf_components/wifi_provisioning/proto-c/wifi_ctrl.pb-c.c</name>
-			<type>1</type>
-			<location>/home/lth/esp/esp-idf/components/wifi_provisioning/proto-c/wifi_ctrl.pb-c.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/wifi_provisioning/proto-c/wifi_scan.pb-c.c</name>
@@ -2307,11 +2277,6 @@
 			<name>build/ide/esp_idf_components/wifi_provisioning/src/wifi_config.c</name>
 			<type>1</type>
 			<location>/home/lth/esp/esp-idf/components/wifi_provisioning/src/wifi_config.c</location>
-		</link>
-		<link>
-			<name>build/ide/esp_idf_components/wifi_provisioning/src/wifi_ctrl.c</name>
-			<type>1</type>
-			<location>/home/lth/esp/esp-idf/components/wifi_provisioning/src/wifi_ctrl.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/wifi_provisioning/src/wifi_scan.c</name>
@@ -2379,6 +2344,11 @@
 			<location>/home/lth/esp/esp-idf/components/esp_hw_support/port/esp32s3/esp_ds.c</location>
 		</link>
 		<link>
+			<name>build/ide/esp_idf_components/esp_hw_support/port/esp32s3/esp_hmac.c</name>
+			<type>1</type>
+			<location>/home/lth/esp/esp-idf/components/esp_hw_support/port/esp32s3/esp_hmac.c</location>
+		</link>
+		<link>
 			<name>build/ide/esp_idf_components/esp_hw_support/port/esp32s3/esp_memprot.c</name>
 			<type>1</type>
 			<location>/home/lth/esp/esp-idf/components/esp_hw_support/port/esp32s3/esp_memprot.c</location>
@@ -2412,11 +2382,6 @@
 			<name>build/ide/esp_idf_components/esp_hw_support/port/esp32s3/rtc_time.c</name>
 			<type>1</type>
 			<location>/home/lth/esp/esp-idf/components/esp_hw_support/port/esp32s3/rtc_time.c</location>
-		</link>
-		<link>
-			<name>build/ide/esp_idf_components/esp_hw_support/port/esp32s3/sar_periph_ctrl.c</name>
-			<type>1</type>
-			<location>/home/lth/esp/esp-idf/components/esp_hw_support/port/esp32s3/sar_periph_ctrl.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/esp_hw_support/port/esp32s3/systimer.c</name>
