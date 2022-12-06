@@ -13,7 +13,7 @@
 #include "esp_log.h"
 
 #define NUM_TASKS 10
-#define TASK_DELAY 1000
+#define TASK_DELAY 200
 
 typedef struct {
     uint8_t task;
@@ -56,7 +56,7 @@ void receive_task(void *pvParameters) {
     for (;;) {
         res = xQueueReceive(task_queue, &message, portMAX_DELAY);
         if (res == pdPASS) { // Wait for 10 secs max
-            ESP_LOGI(LOG_TAG, "From %2d (%d): %5lu", message.task, uxQueueMessagesWaiting(task_queue), message.count);
+            ESP_LOGD(LOG_TAG, "From %2d (%d): %5lu", message.task, uxQueueMessagesWaiting(task_queue), message.count);
         } else {
             ESP_LOGE(LOG_TAG, "Did not receive data but still alive");
         }
@@ -108,24 +108,24 @@ void app_main(void) {
     BaseType_t res;
     char buf[16];
 
-    task_queue = xQueueCreate(10, sizeof(message_typedef));
+    task_queue = xQueueCreate(20, sizeof(message_typedef));
     if (task_queue == 0) {
         ESP_LOGE(LOG_TAG, "Unable to create queue");
     }
 
-    res = xTaskCreate(stat_task, "stat", 6 * 1024, NULL, 3, &stat_task_handle);
+    res = xTaskCreate(stat_task, "stat", 5 * 1024, NULL, 1, &stat_task_handle);
     if (res != pdPASS) {
             ESP_LOGE(LOG_TAG, "Unable to create stat task - returned %lu", res);
     }
 
-    res = xTaskCreate(receive_task, "rec", 3 * 1024, NULL, 2, &receive_task_handle);
+    res = xTaskCreate(receive_task, "rec", 3 * 1024, NULL, 3, &receive_task_handle);
     if (res != pdPASS) {
         ESP_LOGE(LOG_TAG, "Unable to create receive task - returned %lu", res);
     }
 
     for (uint32_t i = 0; i < NUM_TASKS; ++i) {
         sprintf(buf, "task %lu", i);
-        res = xTaskCreate(load_task, buf, 1024, (void*) i, 3, &load_task_handle[i]);
+        res = xTaskCreate(load_task, buf, 1024, (void*) i, 2, &load_task_handle[i]);
         if (res != pdPASS) {
             ESP_LOGE(LOG_TAG, "Unable to create send task - returned %lu", res);
         }
