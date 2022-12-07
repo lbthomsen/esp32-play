@@ -13,7 +13,7 @@
 #include "esp_log.h"
 
 #define NUM_TASKS 10
-#define TASK_DELAY 200
+#define TASK_DELAY 100
 
 typedef struct {
     uint8_t task;
@@ -71,7 +71,7 @@ void stat_task(void *pvParameters) {
 
     for (;;) {
 
-        vTaskDelay(pdMS_TO_TICKS(10000));
+        vTaskDelay(pdMS_TO_TICKS(10000)); // 10 secs between each run
 
         UBaseType_t number_of_tasks = uxTaskGetNumberOfTasks();
         TaskStatus_t *task_array = malloc(sizeof(TaskStatus_t) + number_of_tasks);
@@ -81,18 +81,21 @@ void stat_task(void *pvParameters) {
 
             number_of_tasks = uxTaskGetSystemState(task_array, number_of_tasks, &total_run);
 
-            ESP_LOGI(LOG_TAG, "+------------+------+------------+------------+-------+------+");
-            ESP_LOGI(LOG_TAG, "| Name       | No   | Tot        | Task       | %%     | HW   |");
-            ESP_LOGI(LOG_TAG, "+------------+------+------------+------------+-------+------+");
+            ESP_LOGI(LOG_TAG, "Total ticks: %lu", total_run);
+            ESP_LOGI(LOG_TAG, "+------------+------+-----+------+------------+-------+------+");
+            ESP_LOGI(LOG_TAG, "| Name       | No   | Pri | Core | Task       | %%     | HW   |");
+            ESP_LOGI(LOG_TAG, "+------------+------+-----+------+------------+-------+------+");
             for (int task = 0; task < number_of_tasks; ++task) {
 
                 double percentage = 100 * (double)((double)task_array[task].ulRunTimeCounter / (double)total_run);
                 uint32_t pi = percentage;
                 uint32_t pd = (double)((percentage - pi) * 100);
 
-                ESP_LOGI(LOG_TAG, "| %-10s | %4lu | %10lu | %10lu | %2lu.%02lu | %4lu |", task_array[task].pcTaskName, task_array[task].xTaskNumber, total_run, task_array[task].ulRunTimeCounter, pi, pd, task_array[task].usStackHighWaterMark);
+                int32_t core = task_array[task].xCoreID == 0x7fffffff ? -1 : task_array[task].xCoreID;
+
+                ESP_LOGI(LOG_TAG, "| %-10s | %4lu | %3lu | %4d | %10lu | %2lu.%02lu | %4lu |", task_array[task].pcTaskName, task_array[task].xTaskNumber, task_array[task].uxCurrentPriority, core, task_array[task].ulRunTimeCounter, pi, pd, task_array[task].usStackHighWaterMark);
             }
-            ESP_LOGI(LOG_TAG, "+------------+------+------------+------------+-------+------+");
+            ESP_LOGI(LOG_TAG, "+------------+------+-----+------+------------+-------+------+");
 
             free(task_array);
 
@@ -134,7 +137,8 @@ void app_main(void) {
 
     for (;;) {
         vTaskDelay(pdMS_TO_TICKS(10000));
-        ESP_LOGI(LOG_TAG, "Main task ping");
+        TickType_t ticks = xTaskGetTickCount();
+        ESP_LOGI(LOG_TAG, "Main task ping - run time %lu s", ticks / 1000);
     }
 
 }
