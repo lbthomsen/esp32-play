@@ -13,7 +13,7 @@
 #include "esp_log.h"
 
 #define NUM_TASKS 10
-#define TASK_DELAY 100
+#define TASK_DELAY 50
 
 typedef struct {
     uint8_t task;
