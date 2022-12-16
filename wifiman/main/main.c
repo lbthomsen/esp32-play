@@ -3,10 +3,11 @@
 #include <stdbool.h>
 #include <unistd.h>
 
+#include "sdkconfig.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "esp_log.h"
-#include "sdkconfig.h"
+
 
 #include "stat.h"
 #include "wifiman.h"
@@ -17,7 +18,7 @@ void app_main(void)
 {
 
 	wifiman_init();
-	//stat_init();
+	stat_init();
 
     while (true) {
         ESP_LOGD(TAG, "Ping");

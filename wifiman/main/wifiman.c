@@ -5,6 +5,7 @@
  *      Author: lth
  */
 
+#include "sdkconfig.h"
 #include "esp_log.h"
 
 #include "wifiman.h"
